@@ -5,8 +5,8 @@ Uma aplicação de exemplo que gerencia ou controla as vacinas de um animal dom�
 # Banco de dados
 
 O banco de dados deve ser preparado para a aplicação ser rodada. Então, executar os seguintes _scripts_:
-* [Criação](./src/main/java/docs/criacao.sql) do banco
-* [Inicialização](./src/main/java/docs/inserts.sql) dos dados do banco
+* [Criação](src/docs/criacao.sql) do banco
+* [Inicialização](src/docs/inserts.sql) dos dados do banco
 
 ## Configurações
 
