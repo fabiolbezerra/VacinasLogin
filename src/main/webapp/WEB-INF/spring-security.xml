@@ -9,7 +9,7 @@
     <http auto-config="true">
         <intercept-url pattern="/usuario/**"     access="ROLE_A,ROLE_V,ROLE_U" />
         <intercept-url pattern="/veterinario/**" access="ROLE_A,ROLE_V" />
-        <intercept-url pattern="/admin/**"         access="ROLE_A" />
+        <intercept-url pattern="/admin/**"       access="ROLE_A" />
         <form-login 
             login-page="/index.xhtml"
             authentication-success-handler-ref="myLoginHandler"

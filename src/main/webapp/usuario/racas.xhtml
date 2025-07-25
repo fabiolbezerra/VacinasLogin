@@ -1,25 +1,28 @@
 <?xml version='1.0' encoding='UTF-8' ?>
-<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<ui:composition 
-    template="/template.xhtml"
-    xmlns="http://www.w3.org/1999/xhtml"
-    xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-    xmlns:h="http://xmlns.jcp.org/jsf/html"
-    xmlns:p="http://primefaces.org/ui"
-    xmlns:f="http://xmlns.jcp.org/jsf/core"
-    >
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition
+        template="/template.xhtml"
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+        xmlns:h="http://xmlns.jcp.org/jsf/html"
+        xmlns:p="http://primefaces.org/ui"
+        xmlns:f="http://xmlns.jcp.org/jsf/core"
+>
 
     <ui:define name="title">
         Listagem de Raças
     </ui:define>
 
     <ui:define name="content">
-        <h:form id="formRacas">
-            <p:growl showDetail="true" showSummary="true" />
+        <h1>Raças</h1>
+        <br/>
 
-            <h1>Raças</h1>
-            
-            <p:commandButton action="/admin/raca.xhtml" value="Nova raça" rendered="#{usuarioBean.administrador}" />
+        <h:form id="formRacas">
+            <p:growl showDetail="true" showSummary="true"/>
+
+            <p:commandButton action="/admin/raca.xhtml" icon="fa fa-file-o" value="Nova raça"
+                             rendered="#{usuarioBean.administrador}"/>
             <p:button outcome="/usuario/animais.xhtml" icon="fa fa-ban" value="Cancelar"/>
 
             <br/>
@@ -34,18 +37,18 @@
                     <h:outputText value="#{r.nome}"/>
                 </p:column>
 
-                <p:column headerText="Operações" rendered="#{usuarioBean.administrador}" >
-                    <p:commandButton 
-                        value="Editar"
-                        action="/admin/raca.xhtml"
-                        ajax="false">
+                <p:column headerText="Operações" rendered="#{usuarioBean.administrador}">
+                    <p:commandButton
+                            value="Editar"
+                            action="/admin/raca.xhtml"
+                            ajax="false">
                         <f:setPropertyActionListener target="#{racaBean.raca}" value="#{r}"/>
                     </p:commandButton>
 
-                    <p:commandButton 
-                        value="Excluir"
-                        action="#{racaBean.excluir()}"
-                        ajax="false">
+                    <p:commandButton
+                            value="Excluir"
+                            action="#{racaBean.excluir()}"
+                            ajax="false">
                         <f:setPropertyActionListener target="#{racaBean.raca}" value="#{r}"/>
                     </p:commandButton>
                 </p:column>

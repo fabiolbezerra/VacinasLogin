@@ -10,10 +10,10 @@ import br.edu.ufra.entidade.Vacina;
 import br.edu.ufra.rn.AnimalRN;
 import br.edu.ufra.rn.VacinaRN;
 import br.edu.ufra.util.UtilBean;
+
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
-import javax.faces.context.FacesContext;
 
 /**
  *
@@ -37,8 +37,7 @@ public class VacinaBean {
 
     @PostConstruct
     public void init() {
-        FacesContext currentInstance = FacesContext.getCurrentInstance();
-        String animalID = currentInstance.getExternalContext().getRequestParameterMap().get("animal");
+        String animalID = UtilBean.obterValor("animal");
         if (animalID != null) {
             try {
                 int id = Integer.parseInt(animalID);

@@ -75,3 +75,4 @@ Neste projeto, foi adotodo o seguinte padrão:
 - listar: `icon="fa fa-list-alt"`
 - vacinas: `icon="fa fa-heart-o"`
 - adicionar: `icon="fa fa-plus-square-o"`
+- acessar: `icon="fa fa-sign-in"`

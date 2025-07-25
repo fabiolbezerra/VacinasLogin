@@ -1,52 +1,65 @@
 <?xml version='1.0' encoding='UTF-8' ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:p="http://primefaces.org/ui">
-    <h:head>
-        <title>Vacinas Login</title>
-    </h:head>
-    <h:body>
-        <form 
-            id="formLogin"
-            action="#{request.contextPath}/j_spring_security_check"
-            method="post">
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition
+        template="/template.xhtml"
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+        xmlns:p="http://primefaces.org/ui"
+        xmlns:h="http://java.sun.com/jsf/html">
+    <ui:define name="title">
+        Vacinas Login
+    </ui:define>
+
+    <ui:define name="top">
+        <p style="font-size: larger">
+            Aplicação VacinasLogin
+        </p>
+    </ui:define>
+
+    <ui:define name="content">
+        <form id="formLogin"
+              action="#{request.contextPath}/j_spring_security_check"
+              method="post">
             <div align="center">
-                <h1>Login</h1>
-                
+                <h2>Login</h2>
+
                 <h3>Controle de Vacinas</h3>
 
                 <hr width="15%"/>
-                
-                <h:outputText 
-                    value="Celular, e-mail ou senha inválidos"
-                    rendered="#{param.get('e') != null}"
-                    style="color: red; font-size: 1.2em; "/>
+
+                <h:outputText
+                        value="Celular, e-mail ou senha inválidos"
+                        rendered="#{param.get('e') != null}"
+                        style="color: red; font-size: 1.2em; "/>
 
                 <div class="ui-g-12">
                     <p:inputText id="j_username"
-                                 placeholder="Email ou Celular" 
-                                 required="true" />
+                                 placeholder="Email ou Celular"
+                                 required="true"/>
                 </div>
 
                 <br/>
-                
+
                 <div class="ui-g-12">
                     <p:password id="j_password"
-                                placeholder="Senha" 
-                                required="true" 
+                                placeholder="Senha"
+                                required="true"
                                 feedback="false"/>
                 </div>
 
                 <hr width="15%"/>
 
                 <div class="ui-g-12 button-container">
-                    <p:commandButton 
-                        onclick="#{request.contextPath} / j_spring_security_check;" 
-                        value="Acessar"
-                        />
+                    <p:commandButton onclick="#{request.contextPath} / j_spring_security_check;"
+                                     icon="fa fa-sign-in"
+                                     value="Acessar"
+                    />
                 </div>
+                
+                <br/>
+                <br/>
             </div>
         </form>
-    </h:body>
-</html>
+    </ui:define>
+</ui:composition>

@@ -15,11 +15,10 @@
     </ui:define>
 
     <ui:define name="content">
+        <h1>Animais</h1>
+        <br/>
         <h:form id="formAnimais">
             <p:growl showDetail="true" showSummary="true"/>
-
-
-            <h1>Animais</h1>
 
             <p:commandButton action="/veterinario/animal.xhtml" icon="fa fa-file-o" value="Novo animal"
                              rendered="#{not usuarioBean.perfilUsuario}"/>
