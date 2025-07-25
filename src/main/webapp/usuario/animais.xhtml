@@ -1,28 +1,31 @@
 <?xml version='1.0' encoding='UTF-8' ?>
-<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<ui:composition 
-    template="/template.xhtml"
-    xmlns="http://www.w3.org/1999/xhtml"
-    xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-    xmlns:h="http://xmlns.jcp.org/jsf/html"
-    xmlns:p="http://primefaces.org/ui"
-    xmlns:f="http://xmlns.jcp.org/jsf/core"
-    >
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition
+        template="/template.xhtml"
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+        xmlns:h="http://xmlns.jcp.org/jsf/html"
+        xmlns:p="http://primefaces.org/ui"
+        xmlns:f="http://xmlns.jcp.org/jsf/core"
+>
 
     <ui:define name="title">
         Listagem de Animais
     </ui:define>
 
     <ui:define name="content">
-        <h:form id="formAnimal">
-            <p:growl showDetail="true" showSummary="true" />
+        <h:form id="formAnimais">
+            <p:growl showDetail="true" showSummary="true"/>
 
 
             <h1>Animais</h1>
 
-            <p:commandButton action="/veterinario/animal.xhtml" value="Novo animal" rendered="#{not usuarioBean.perfilUsuario}"/>
-            <p:commandButton action="racas.xhtml" value="Listar raças"/>
-            <p:commandButton action="/admin/usuarios.xhtml" value="Listar usuários" rendered="#{usuarioBean.administrador}"/>
+            <p:commandButton action="/veterinario/animal.xhtml" icon="fa fa-file-o" value="Novo animal"
+                             rendered="#{not usuarioBean.perfilUsuario}"/>
+            <p:commandButton action="racas.xhtml" icon="fa fa-list-alt" value="Listar raças"/>
+            <p:commandButton action="/admin/usuarios.xhtml" icon="fa fa-list-alt" value="Listar usuários"
+                             rendered="#{usuarioBean.administrador}"/>
 
             <br/>
             <br/>
@@ -55,25 +58,25 @@
                     </h:outputText>
                 </p:column>
 
-                <p:column headerText="Operações" rendered="#{not usuarioBean.perfilUsuario}" >
-                    <p:commandButton 
-                        value="Editar"
-                        action="/veterinario/animal.xhtml"
-                        ajax="false">
+                <p:column headerText="Operações" rendered="#{not usuarioBean.perfilUsuario}">
+                    <p:commandButton value="Editar"
+                                     icon="fa fa-pencil"
+                                     action="/veterinario/animal.xhtml"
+                                     ajax="false">
                         <f:setPropertyActionListener target="#{animalBean.animal}" value="#{a}"/>
                     </p:commandButton>
 
-                    <p:commandButton 
-                        value="Vacinas"
-                        action="/veterinario/vacinas.xhtml"
-                        ajax="false">
+                    <p:commandButton value="Vacinas"
+                                     icon="fa fa-heart-o"
+                                     action="/veterinario/vacinas.xhtml"
+                                     ajax="false">
                         <f:param name="animal" value="#{a.id}"/>
                     </p:commandButton>
 
-                    <p:commandButton 
-                        value="Excluir"
-                        action="#{animalBean.excluir()}"
-                        ajax="false">
+                    <p:commandButton value="Excluir"
+                                     icon="fa fa-trash-o"
+                                     action="#{animalBean.excluir()}"
+                                     ajax="false">
                         <f:setPropertyActionListener target="#{animalBean.animal}" value="#{a}"/>
                     </p:commandButton>
                 </p:column>

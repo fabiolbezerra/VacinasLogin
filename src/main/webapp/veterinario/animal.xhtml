@@ -43,7 +43,7 @@
                 <p:outputLabel value="Nascimento"/>
                 <p:calendar value="#{animalBean.animal.nascimento}" pattern="dd/MM/yyyy"/>                
             </h:panelGrid>
-            <p:button outcome="/usuario/animais.xhtml" value="Cancelar"/>
+            <p:button outcome="/usuario/animais.xhtml" icon="fa fa-ban" value="Cancelar"/>
             <p:commandButton action="#{animalBean.salvar()}" value="Salvar" ajax="false"/>
         </h:form>
     </ui:define>

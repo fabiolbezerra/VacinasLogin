@@ -61,3 +61,17 @@ Ciclano da Silva
 * Login: 91999993333 ou ciclano@seila.com.br
 * Senha: a
 * Perfil: Usuário ou Secretário
+
+# Ícones nos Botões
+
+Os botões utilizam ícones disponíveis no projeto [**Font Awesome 4**](https://fontawesome.com/v4/icons/).
+
+Neste projeto, foi adotodo o seguinte padrão:
+- novo: `icon="fa fa-file-o"`
+- salvar: `icon="fa fa-floppy-o"`
+- cancelar: `icon="fa fa-ban"`
+- editar: `icon="fa fa-pencil"`
+- excluir: `icon="fa fa-trash-o"`
+- listar: `icon="fa fa-list-alt"`
+- vacinas: `icon="fa fa-heart-o"`
+- adicionar: `icon="fa fa-plus-square-o"`

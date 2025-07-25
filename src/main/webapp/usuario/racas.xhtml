@@ -14,13 +14,13 @@
     </ui:define>
 
     <ui:define name="content">
-        <h:form id="formAnimal">
+        <h:form id="formRacas">
             <p:growl showDetail="true" showSummary="true" />
 
             <h1>Raças</h1>
             
             <p:commandButton action="/admin/raca.xhtml" value="Nova raça" rendered="#{usuarioBean.administrador}" />
-            <p:button outcome="/usuario/animais.xhtml" value="Cancelar"/>
+            <p:button outcome="/usuario/animais.xhtml" icon="fa fa-ban" value="Cancelar"/>
 
             <br/>
             <br/>

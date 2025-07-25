@@ -14,7 +14,7 @@
     </ui:define>
 
     <ui:define name="content">
-        <h:form id="formAnimal">
+        <h:form id="formUsuario">
             <p:growl showDetail="true" showSummary="true" />
             <h1>Cadastro de Usuário</h1>
             <h:inputHidden value="#{usuarioBean.usuario.id}"/>
@@ -39,7 +39,7 @@
                 <p:password value="#{usuarioBean.usuario.senha}" rendered="#{usuarioBean.novoUsuario}"/>
             </h:panelGrid>
 
-            <p:button outcome="/admin/usuarios.xhtml" value="Cancelar"/>
+            <p:button outcome="/admin/usuarios.xhtml" icon="fa fa-ban" value="Cancelar"/>
             <p:commandButton action="#{usuarioBean.salvar()}" value="Salvar" ajax="false"/>
         </h:form>
     </ui:define>

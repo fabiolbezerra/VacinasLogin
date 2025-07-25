@@ -49,7 +49,7 @@ public class GenericDAO<T> implements InterfaceDAO<T> {
         }
         try {
             transaction.begin();
-            getEntityManager().persist(o);
+            em.persist(o);
             transaction.commit();
 
             return true;
@@ -76,7 +76,7 @@ public class GenericDAO<T> implements InterfaceDAO<T> {
         }
         try {
             transaction.begin();
-            em.remove(entityManager.merge(o));
+            em.remove(em.merge(o));
             transaction.commit();
 
             return true;
@@ -103,7 +103,7 @@ public class GenericDAO<T> implements InterfaceDAO<T> {
         }
         try {
             transaction.begin();
-            getEntityManager().merge(o);
+            em.merge(o);
             transaction.commit();
             return true;
         } catch (Exception e) {
@@ -123,13 +123,13 @@ public class GenericDAO<T> implements InterfaceDAO<T> {
         if (id == null) {
             return null;
         }
-        String query = classe.getSimpleName() + ".findById";
+        final String JPQL = classe.getSimpleName() + ".findById";
         EntityManager em = getEntityManager();
-        final TypedQuery<T> q = em.createNamedQuery(query, classe);
+        final TypedQuery<T> query = em.createNamedQuery(JPQL, classe);
         T resposta = null;
         try {
             List<T> objs = null;
-            objs = q.setParameter("id", id).getResultList();
+            objs = query.setParameter("id", id).getResultList();
             if (objs != null && !objs.isEmpty()) {
                 resposta = objs.get(0);
                 em.refresh(resposta);
@@ -144,12 +144,12 @@ public class GenericDAO<T> implements InterfaceDAO<T> {
 
     @Override
     public List<T> obterTodos(Class<T> classe) {
-        String query = classe.getSimpleName() + ".findAll";
+        final String JPQL = classe.getSimpleName() + ".findAll";
         EntityManager em = getEntityManager();
-        TypedQuery<T> q = em.createNamedQuery(query, classe);
+        TypedQuery<T> query = em.createNamedQuery(JPQL, classe);
         List<T> resposta = null;
         try {
-            resposta = q.getResultList();
+            resposta = query.getResultList();
         } catch (Exception e) {
             e.printStackTrace(System.err);
         } finally {
@@ -159,29 +159,29 @@ public class GenericDAO<T> implements InterfaceDAO<T> {
     }
 
     public List<T> obterLista(Class<T> classe,
-            List<String> criterios,
-            List valores,
-            final boolean AND) {
+                              List<String> criterios,
+                              List valores,
+                              final boolean AND) {
         if (criterios == null
                 || valores == null
                 || criterios.size() != valores.size()
                 || criterios.size() < 1) {
             return null;
         }
-        String query = "SELECT o FROM " + classe.getSimpleName() + " o WHERE ";
-        query += " o." + criterios.get(0) + " = :" + criterios.get(0);
+        String JPQL = "SELECT o FROM " + classe.getSimpleName() + " o WHERE ";
+        JPQL += " o." + criterios.get(0) + " = :" + criterios.get(0);
         final String CONECTIVO = AND ? " AND " : " OR ";
         for (int i = 1; i < criterios.size(); i++) {
-            query += CONECTIVO + " o." + criterios.get(i) + " = :" + criterios.get(i);
+            JPQL += CONECTIVO + " o." + criterios.get(i) + " = :" + criterios.get(i);
         }
         EntityManager em = getEntityManager();
-        final TypedQuery<T> q = em.createQuery(query, classe);
+        final TypedQuery<T> query = em.createQuery(JPQL, classe);
         List<T> resposta = null;
         try {
             for (int i = 0; i < valores.size(); i++) {
-                q.setParameter(criterios.get(i), valores.get(i));
+                query.setParameter(criterios.get(i), valores.get(i));
             }
-            resposta = q.getResultList();
+            resposta = query.getResultList();
         } catch (Exception e) {
             e.printStackTrace(System.err);
         } finally {

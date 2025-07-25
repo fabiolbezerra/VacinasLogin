@@ -14,7 +14,7 @@
     </ui:define>
 
     <ui:define name="content">
-        <h:form id="formAnimal">
+        <h:form id="formRaca">
             <p:growl showDetail="true" showSummary="true" />
             <h1>Cadastro de Raça</h1>
             <h:inputHidden value="#{racaBean.raca.id}"/>
@@ -23,7 +23,7 @@
                 <p:inputText value="#{racaBean.raca.nome}"/>
             </h:panelGrid>
 
-            <p:button outcome="/usuario/animais.xhtml" value="Cancelar"/>
+            <p:button outcome="/usuario/animais.xhtml" icon="fa fa-ban" value="Cancelar"/>
             <p:commandButton action="#{racaBean.salvar()}" value="Salvar" ajax="false"/>
         </h:form>
     </ui:define>

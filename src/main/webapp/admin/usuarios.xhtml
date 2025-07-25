@@ -1,27 +1,28 @@
 <?xml version='1.0' encoding='UTF-8' ?>
-<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<ui:composition 
-    template="/template.xhtml"
-    xmlns="http://www.w3.org/1999/xhtml"
-    xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-    xmlns:h="http://xmlns.jcp.org/jsf/html"
-    xmlns:p="http://primefaces.org/ui"
-    xmlns:f="http://xmlns.jcp.org/jsf/core"
-    >
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition
+        template="/template.xhtml"
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+        xmlns:h="http://xmlns.jcp.org/jsf/html"
+        xmlns:p="http://primefaces.org/ui"
+        xmlns:f="http://xmlns.jcp.org/jsf/core"
+>
 
     <ui:define name="title">
         Listagem de Usuários
     </ui:define>
 
     <ui:define name="content">
-        <h:form id="formUsuario">
-            <p:growl showDetail="true" showSummary="true" />
+        <h:form id="formUsuarios">
+            <p:growl showDetail="true" showSummary="true"/>
 
 
             <h1>Usuários</h1>
 
-            <p:commandButton action="/admin/usuario.xhtml" value="Novo usuário"/>
-            <p:button outcome="/usuario/animais.xhtml" value="Cancelar"/>
+            <p:commandButton action="/admin/usuario.xhtml" icon="fa fa-file-o" value="Novo usuário"/>
+            <p:button outcome="/usuario/animais.xhtml" icon="fa fa-ban" value="Cancelar"/>
 
             <br/>
             <br/>
@@ -43,18 +44,18 @@
                     <h:outputText value="#{usuarioBean.getPerfilDoUsuario(u)}"/>
                 </p:column>
 
-                <p:column headerText="Operações" >
-                    <p:commandButton 
-                        value="Editar"
-                        action="/admin/usuario.xhtml"
-                        ajax="false">
+                <p:column headerText="Operações">
+                    <p:commandButton value="Editar"
+                                     icon="fa fa-pencil"
+                                     action="/admin/usuario.xhtml"
+                                     ajax="false">
                         <f:setPropertyActionListener target="#{usuarioBean.usuario}" value="#{u}"/>
                     </p:commandButton>
 
-                    <p:commandButton 
-                        value="Excluir"
-                        action="#{usuarioBean.excluir()}"
-                        ajax="false">
+                    <p:commandButton value="Excluir"
+                                     icon="fa fa-trash-o"
+                                     action="#{usuarioBean.excluir()}"
+                                     ajax="false">
                         <f:setPropertyActionListener target="#{usuarioBean.usuario}" value="#{u}"/>
                     </p:commandButton>
                 </p:column>

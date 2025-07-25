@@ -14,7 +14,7 @@
     </ui:define>
 
     <ui:define name="content">
-        <h:form id="formAnimal">
+        <h:form id="formVacinas">
             <p:growl showDetail="true" showSummary="true" />
             <h1>Vacinas do #{vacinaBean.animal.nome}</h1>
             <h:inputHidden value="#{vacinaBean.animal.id}"/>
@@ -49,8 +49,8 @@
                 <p:outputLabel value="Data"/>
                 <p:calendar value="#{vacinaBean.vacina.data}" pattern="dd/MM/yyyy"/>
             </h:panelGrid>
-            <p:button outcome="/usuario/animais.xhtml" value="Cancelar"/>
-            <p:commandButton action="#{vacinaBean.adicionar()}" value="Adicionar" ajax="false"/>
+            <p:button outcome="/usuario/animais.xhtml" icon="fa fa-ban" value="Cancelar"/>
+            <p:commandButton action="#{vacinaBean.adicionar()}" icon="fa fa-plus-square-o" value="Adicionar" ajax="false"/>
 
             <p:dataTable value="#{vacinaBean.animal.vacinaList}" var="v">
                 <p:column headerText="Nome">
@@ -64,7 +64,7 @@
                 </p:column>
 
                 <p:column >
-                    <p:commandButton value="Excluir" action="#{vacinaBean.excluir()}" update="@form">
+                    <p:commandButton value="Excluir" icon="fa fa-trash-o" action="#{vacinaBean.excluir()}" update="@form">
                         <f:setPropertyActionListener target="#{vacinaBean.vacina}" value="#{v}" />
                     </p:commandButton>
                 </p:column>
